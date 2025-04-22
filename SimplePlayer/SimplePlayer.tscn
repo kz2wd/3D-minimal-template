@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://ongug3o51pu0"]
+
+[ext_resource type="Script" uid="uid://cf7ifei14cdn1" path="res://SimplePlayer/SimplePlayer.gd" id="1_kh0yl"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0wfyh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sugp2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jyhfs"]
+albedo_color = Color(0.872825, 0.312307, 0.476639, 1)
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 2
+script = ExtResource("1_kh0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0wfyh")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0683, 0)
+mesh = SubResource("CapsuleMesh_sugp2")
+material = SubResource("StandardMaterial3D_jyhfs")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, -0.430512)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Camera3D"]
+light_color = Color(0.609564, 0.594667, 0.700346, 1)
+spot_range = 15.0
+spot_angle = 30.0

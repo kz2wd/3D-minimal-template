@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx5epqxu3cfh6"]
+
+[ext_resource type="Script" uid="uid://dbmp17rl47wmf" path="res://ComplexPlayer/ComplexPlayer.gd" id="1_uvf0u"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vexcj"]
+radius = 0.463054
+height = 0.999395
+
+[sub_resource type="SphereMesh" id="SphereMesh_vjg8o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkbng"]
+height = 1.04011
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_uvf0u")
+
+[node name="UpperBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.57206, 0)
+shape = SubResource("CapsuleShape3D_vexcj")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="UpperBody"]
+transform = Transform3D(0.984522, 0, 0, 0, 0.984522, 0, 0, 0, 0.984522, 0, 0, 0)
+mesh = SubResource("SphereMesh_vjg8o")
+
+[node name="LowerBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.526632, 0)
+shape = SubResource("CapsuleShape3D_vkbng")
+
+[node name="CSGMesh3D2" type="CSGMesh3D" parent="LowerBody"]
+transform = Transform3D(1.04905, 0, 0, 0, 1.04905, 0, 0, 0, 1.04905, -0.00745106, 0.00348145, -0.0312271)
+mesh = SubResource("SphereMesh_vjg8o")
+
+[node name="LowerBodyBase" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.613328, 0)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 0.977889, 0.209124, 0, -0.209124, 0.977889, 0, 0.524627, 3.07939)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.568488, 0)
+target_position = Vector3(0, 2, 0)
